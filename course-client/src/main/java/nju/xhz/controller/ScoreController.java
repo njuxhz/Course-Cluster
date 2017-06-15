@@ -22,10 +22,10 @@ public class ScoreController {
     @PutMapping("/scoreClient/{id}")
     @ResponseBody
     public int update(@PathVariable String id,
-                      @RequestParam(value = "regular",defaultValue = "0") String regular,
-                      @RequestParam(value = "project",defaultValue = "0") String project,
-                      @RequestParam(value = "final",defaultValue = "0") String fin,
-                      @RequestParam(value = "total",defaultValue = "0") String total) {
+                      @RequestParam(value = "regular", defaultValue = "0") String regular,
+                      @RequestParam(value = "project", defaultValue = "0") String project,
+                      @RequestParam(value = "final", defaultValue = "0") String fin,
+                      @RequestParam(value = "total", defaultValue = "0") String total) {
         ServiceInstance serviceInstance = this.loadBalancerClient.choose("score-service");
         System.out.println("===" + ":" + serviceInstance.getServiceId() + ":" + serviceInstance.getHost() + ":"
                 + serviceInstance.getPort());

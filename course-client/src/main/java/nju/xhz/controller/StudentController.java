@@ -39,9 +39,9 @@ public class StudentController {
 
     @PostMapping("/studentClient")
     @ResponseBody
-    public int add(@RequestParam(value = "id",defaultValue = "0") String id,
-                    @RequestParam(value = "name",defaultValue = "xhz") String name,
-                    @RequestParam(value = "major",defaultValue = "computer") String major) {
+    public int add(@RequestParam(value = "id", defaultValue = "0") String id,
+                    @RequestParam(value = "name", defaultValue = "xhz") String name,
+                    @RequestParam(value = "major", defaultValue = "computer") String major) {
         ServiceInstance serviceInstance = this.loadBalancerClient.choose("student-service");
         System.out.println("===" + ":" + serviceInstance.getServiceId() + ":" + serviceInstance.getHost() + ":"
                 + serviceInstance.getPort());
@@ -68,13 +68,13 @@ public class StudentController {
     @PutMapping("/studentClient/{oldId}")
     @ResponseBody
     public int update(@PathVariable String oldId,
-                      @RequestParam(value = "id",defaultValue = "0") String id,
-                      @RequestParam(value = "name",defaultValue = "xhz") String name,
-                      @RequestParam(value = "major",defaultValue = "computer") String major,
-                      @RequestParam(value = "regular",defaultValue = "0") String regular,
-                      @RequestParam(value = "project",defaultValue = "0") String project,
-                      @RequestParam(value = "final",defaultValue = "0") String fin,
-                      @RequestParam(value = "total",defaultValue = "0") String total) {
+                      @RequestParam(value = "id", defaultValue = "0") String id,
+                      @RequestParam(value = "name", defaultValue = "xhz") String name,
+                      @RequestParam(value = "major", defaultValue = "computer") String major,
+                      @RequestParam(value = "regular", defaultValue = "0") String regular,
+                      @RequestParam(value = "project", defaultValue = "0") String project,
+                      @RequestParam(value = "final", defaultValue = "0") String fin,
+                      @RequestParam(value = "total", defaultValue = "0") String total) {
         ServiceInstance serviceInstance = this.loadBalancerClient.choose("student-service");
         System.out.println("===" + ":" + serviceInstance.getServiceId() + ":" + serviceInstance.getHost() + ":"
                 + serviceInstance.getPort());
