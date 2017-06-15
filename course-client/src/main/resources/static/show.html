@@ -1,0 +1,109 @@
+<h3 class="xhz_title">选课管理</h3>
+
+<div>
+    <div class="xhz_function" style="left: 20px">
+        <button class="btn btn-block btn-info xhz_btn" ng-click="showAdd()">添加</button>
+        <button class="btn btn-block btn-info xhz_btn xhz_upload" style="margin-left: 150px;margin-top: -33px;" ng-click="showFile()">
+            导入</button>
+
+        <button class="btn btn-block btn-info xhz_btn" style="margin-left: 420px;margin-top: -33px;" ng-show="leftPage" ng-click="left()">
+            上一页</button>
+        <h3 style="margin-left: 530px;margin-top: -30px;">{{page}}</h3>
+        <button class="btn btn-block btn-info xhz_btn" style="margin-left: 560px;margin-top: -39px;" ng-show="rightPage" ng-click="right()">
+            下一页</button>
+    </div>
+</div>
+
+<div class="xhz_table">
+    <table border="1" style="margin: 0px auto;">
+        <tr>
+            <th style="width: 150px;height: 35px;">学号</th>
+            <th style="width: 150px;">姓名</th>
+            <th style="width: 150px;">专业</th>
+            <th style="width: 320px;">操作</th>
+        </tr>
+        <tr ng-repeat="item in show">
+            <td height="35px;">{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.major}}</td>
+            <td>
+                <div class="xhz_edit">
+                    <button class="btn btn-block btn-info xhz_btn" ng-click="delete(item)">删除</button>
+                    <button class="btn btn-block btn-info xhz_btn" style="margin-left: 110px;margin-top: -34px" ng-click="showEditInfo(item)">编辑</button>
+                    <button class="btn btn-block btn-info xhz_btn" style="margin-left: 220px;margin-top: -34px" ng-click="showScore(item)">成绩</button>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="xhz_score" ng-show="scoreShow">
+    <div style="height: 50px;border: 1px solid;"><h3>成绩</h3></div>
+    <div class="xhz_topMarginLarge">
+        <table border="1" style="margin: 0px auto;">
+            <tr><td class="xhz_firstColumn">平时</td><td width="200px">
+                <input ng-model="tmp.regular" ng-change="change()">
+            </td></tr>
+            <tr><td class="xhz_column">大作业</td><td><input  ng-model="tmp.project" ng-change="change()"></td></tr>
+            <tr><td class="xhz_column">期末</td><td><input  ng-model="tmp.final" ng-change="change()"></td></tr>
+            <tr><td class="xhz_column">总评</td><td>{{tmp.total}}</td></tr>
+        </table>
+    </div>
+    <div class="xhz_function xhz_function_offset">
+        <button class="btn btn-block btn-info xhz_btn" ng-click="confirmScore()">确认</button>
+        <button class="btn btn-block btn-info xhz_btn xhz_secondBtn" style="margin-top: -33px;" ng-click="disShowScore()">
+            取消
+        </button>
+    </div>
+</div>
+
+<div class="xhz_add" ng-show="addShow">
+    <div class="xhz_subTitle"><h3>添加</h3></div>
+    <div class="xhz_topMarginSmall">
+        <table border="1" style="margin: 0px auto;">
+            <tr><td class="xhz_firstColumn">学号</td><td width="200px"><input ng-model="tmp.id"></td></tr>
+            <tr><td class="xhz_column">姓名</td><td><input ng-model="tmp.name"></td></tr>
+            <tr><td class="xhz_column">专业</td><td><input ng-model="tmp.major"></td></tr>
+        </table>
+    </div>
+    <div class="xhz_function xhz_function_offset">
+        <button class="btn btn-block btn-info xhz_btn" ng-click="confirmAdd()">添加</button>
+        <button class="btn btn-block btn-info xhz_btn xhz_secondBtn" style="margin-top: -33px;" ng-click="disShowAdd()">
+            取消
+        </button>
+    </div>
+</div>
+
+<div class="xhz_editInfo" ng-show="editInfoShow">
+    <div class="xhz_subTitle"><h3>编辑</h3></div>
+    <div class="xhz_topMarginSmall">
+        <table border="1" style="margin: 0px auto;">
+            <tr><td class="xhz_firstColumn">学号</td><td width="200px"><input ng-model="tmp.id"></td></tr>
+            <tr><td class="xhz_column">姓名</td><td><input ng-model="tmp.name"></td></tr>
+            <tr><td class="xhz_column">专业</td><td><input ng-model="tmp.major"></td></tr>
+        </table>
+    </div>
+    <div class="xhz_function xhz_function_offset">
+        <button class="btn btn-block btn-info xhz_btn" ng-click="confirmEdit()">编辑</button>
+        <button class="btn btn-block btn-info xhz_btn xhz_secondBtn" style="margin-top: -33px;" ng-click="disShowEditInfo()">
+            取消
+        </button>
+    </div>
+</div>
+
+<div class="xhz_file" ng-show="fileShow">
+    <div class="xhz_subTitle"><h3>导入</h3></div>
+    <div class="xhz_topMarginSmall">
+        <table border="1" style="margin: 0px auto;">
+            <tr><td class="xhz_firstColumn">文件</td><td width="200px"><input type="file"></td></tr>
+        </table>
+    </div>
+    <div class="xhz_function xhz_function_offset">
+        <button class="btn btn-block btn-info xhz_btn" ng-click="confirmFile()">上传</button>
+        <button class="btn btn-block btn-info xhz_btn xhz_secondBtn" style="margin-top: -33px;" ng-click="disShowFile()">
+            取消
+        </button>
+    </div>
+</div>
+
+<h1 class="xhz_title" style="position: absolute; bottom: 10%; left: 47%;" ng-show="isLoading">Loading...</h1>
