@@ -46,7 +46,7 @@
             </td></tr>
             <tr><td class="xhz_column">大作业</td><td><input  ng-model="tmp.project" ng-change="change()"></td></tr>
             <tr><td class="xhz_column">期末</td><td><input  ng-model="tmp.final" ng-change="change()"></td></tr>
-            <tr><td class="xhz_column">总评</td><td>{{tmp.total}}</td></tr>
+            <tr><td class="xhz_column">总评</td><td>{{tmp.total | number: 2}}</td></tr>
         </table>
     </div>
     <div class="xhz_function xhz_function_offset">
